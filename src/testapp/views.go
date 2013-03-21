@@ -22,19 +22,7 @@ func loadPage(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
-type View struct{}
-
-func (v *View) Bound(
-	f func(*View, http.ResponseWriter, *http.Request)) func(http.ResponseWriter, *http.Request) {
-
-	bound := func(w http.ResponseWriter, r *http.Request) {
-		f(v, w, r)
-	}
-	return bound
-}
-
 type TestView struct {
-	View
 	Value int
 }
 
